@@ -13,4 +13,16 @@ export const arrayHandler = (num) => {
 
 const array = [1, 2, 3, 4, 5]
 
-console.log(array)
+// my solution
+for (const num of array) {
+  console.log(await arrayHandler(num))
+}
+
+// my first solution:
+// const getArrayElements = async (inputArray) => {
+//   for (const num of inputArray) {
+//     console.log(await arrayHandler(num))
+//   }
+// }
+
+// getArrayElements(array)
