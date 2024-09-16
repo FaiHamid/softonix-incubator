@@ -21,7 +21,7 @@ interface IThird {
   i: number
 }
 
-type TUnified = unknown // ...
+type TUnified = Required<IFirst> & Pick<ISecond, 'd'> & Omit<IThird, 'h'>
 
 export {
   type TUnified
