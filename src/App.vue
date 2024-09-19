@@ -2,37 +2,52 @@
   <header>
     <div class="max-w-[1440px] px-[135px] mx-auto py-6 flex items-center justify-between">
       <div class="flex space-x-[72px] items-center ">
-        <div class="flex items-center space-x-1.5">
+        <a href="#home" class="flex items-center space-x-1.5">
           <img src="/img/logo.svg" alt="logo">
           <p class="font-sen font-bold text-[20px]">Salty</p>
-        </div>
+        </a>
 
         <nav>
           <ul class="flex space-x-9">
-            <li>
-              <a href="#home" class="font-poppins">Home</a>
+            <li class="group">
+              <a href="#home" class="font-poppins">
+                Home
+                <span class="after:content-[''] after:block after:w-[12px] after:h-[2px] after:bg-orange after:mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+              </a>
             </li>
 
-            <li>
-              <a href="#aboutus" class="font-poppins">About us</a>
+            <li class="group">
+              <a href="#aboutus" class="font-poppins">
+                About us
+                <span class="after:content-[''] after:block after:w-[12px] after:h-[2px] after:bg-orange after:mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+              </a>
             </li>
 
-            <li>
-              <a href="#destinations" class="font-poppins">Destinations</a>
+            <li class="group">
+              <a href="#destinations" class="font-poppins">
+                Destinations
+                <span class="after:content-[''] after:block after:w-[12px] after:h-[2px] after:bg-orange after:mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+              </a>
             </li>
 
-            <li>
-              <a href="#tours" class="font-poppins">Tours</a>
+            <li class="group">
+              <a href="#tours" class="font-poppins">
+                Tours
+                <span class="after:content-[''] after:block after:w-[12px] after:h-[2px] after:bg-orange after:mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+              </a>
             </li>
 
-            <li>
-              <a href="#blog" class="font-poppins">Blog</a>
+            <li class="group">
+              <a href="#blog" class="font-poppins">
+                Blog
+                <span class="after:content-[''] after:block after:w-[12px] after:h-[2px] after:bg-orange after:mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+              </a>
             </li>
           </ul>
         </nav>
       </div>
 
-      <button class="flex items-center justify-center border-[1.4px] border-orange rounded-full w-[170px] h-[54px]">
+      <button class="flex items-center justify-center border-[1.4px] border-orange rounded-full w-[170px] h-[54px]  hover:bg-white ">
         <div class="flex">
           <span class="font-poppins font-medium text-orange">Book now</span>
           <img src="/img/book.svg" alt="book" class="ml-1.5">
@@ -42,7 +57,7 @@
   </header>
 
   <main>
-    <div class="max-w-[1440px] px-[135px] mx-auto pt-[10px] mb-[132px] flex items-center justify-between">
+    <div id="home" class="max-w-[1440px] px-[135px] mx-auto pt-[10px] mb-[132px] flex items-center justify-between">
       <div class="mr-[67px]">
         <h1 class="font-sen font-bold text-[84px] leading-[86px] text-first-text-color mb-[26px]">
           Discover the Best Lovely Places
@@ -81,7 +96,7 @@
       <img src="/img/homepage.png" alt="">
     </div>
 
-    <div class="max-w-[1440px] px-[135px] mx-auto pt-[18px] pb-8 mb-58px">
+    <div id="tours" class="max-w-[1440px] px-[135px] mx-auto pt-[18px] pb-8 mb-58px">
       <div class="flex items-center justify-between mb-6">
         <h2 class="font-semibold text-[56px] text-first-text-color leading-[56px] block">Categories</h2>
 
@@ -102,39 +117,45 @@
       </p>
 
       <div class="grid-slider">
-        <div class="flex flex-col items-center">
-          <img src="/img/beach.png" alt="" class="mb-[18px]">
-          <p class="font-medium text-[26px] leading-[26px] text-first-text-color">Beach</p>
+        <div class="flex flex-col relative items-center group cursor-pointer">
+          <img src="/img/beach.png" alt="" class="mb-[18px] transition-opacity duration-300 group-hover:opacity-70">
+          <p class="font-medium text-[26px] leading-[26px] text-first-text-color group-hover:font-bold transition-font duration-300">Beach</p>
+          <p class="absolute text-white font-semibold text-[20px] leading-[22px] transition-opacity duration-300 opacity-0 group-hover:opacity-100 top-[120px] left-1/2 transform -translate-x-1/2 -translate-y-1/2">Visit</p>
         </div>
 
-        <div class="flex flex-col items-center">
-          <img src="/img/desert.png" alt="" class="mb-[18px]">
-          <p class="font-medium text-[26px] leading-[26px] text-first-text-color">Desert</p>
+        <div class="flex flex-col relative items-center group cursor-pointer">
+          <img src="/img/desert.png" alt="" class="mb-[18px] transition-opacity duration-300 group-hover:opacity-70">
+          <p class="font-medium text-[26px] leading-[26px] text-first-text-color group-hover:font-bold transition-font duration-300">Desert</p>
+          <p class="absolute text-white font-semibold text-[20px] leading-[22px] transition-opacity duration-300 opacity-0 group-hover:opacity-100 top-[120px] left-1/2 transform -translate-x-1/2 -translate-y-1/2">Visit</p>
         </div>
 
-        <div class="flex flex-col items-center">
-          <img src="/img/mountain.png" alt="" class="mb-[18px]">
-          <p class="font-medium text-[26px] leading-[26px] text-first-text-color">Mountain</p>
+        <div class="flex flex-col relative items-center group cursor-pointer">
+          <img src="/img/mountain.png" alt="" class="mb-[18px] transition-opacity duration-300 group-hover:opacity-70">
+          <p class="font-medium text-[26px] leading-[26px] text-first-text-color group-hover:font-bold transition-font duration-300">Mountain</p>
+          <p class="absolute text-white font-semibold text-[20px] leading-[22px] transition-opacity duration-300 opacity-0 group-hover:opacity-100 top-[120px] left-1/2 transform -translate-x-1/2 -translate-y-1/2">Visit</p>
         </div>
 
-        <div class="flex flex-col items-center">
-          <img src="/img/temple.png" alt="" class="mb-[18px]">
-          <p class="font-medium text-[26px] leading-[26px] text-first-text-color">Temple</p>
+        <div class="flex flex-col relative items-center group cursor-pointer">
+          <img src="/img/temple.png" alt="" class="mb-[18px] transition-opacity duration-300 group-hover:opacity-70">
+          <p class="font-medium text-[26px] leading-[26px] text-first-text-color group-hover:font-bold transition-font duration-300">Temple</p>
+          <p class="absolute text-white font-semibold text-[20px] leading-[22px] transition-opacity duration-300 opacity-0 group-hover:opacity-100 top-[120px] left-1/2 transform -translate-x-1/2 -translate-y-1/2">Visit</p>
         </div>
 
-        <div class="flex flex-col items-center">
-          <img src="/img/tower.png" alt="" class="mb-[18px]">
-          <p class="font-medium text-[26px] leading-[26px] text-first-text-color">Tower</p>
+        <div class="flex flex-col relative items-center group cursor-pointer">
+          <img src="/img/tower.png" alt="" class="mb-[18px] transition-opacity duration-300 group-hover:opacity-70">
+          <p class="font-medium text-[26px] leading-[26px] text-first-text-color group-hover:font-bold transition-font duration-300">Tower</p>
+          <p class="absolute text-white font-semibold text-[20px] leading-[22px] transition-opacity duration-300 opacity-0 group-hover:opacity-100 top-[120px] left-1/2 transform -translate-x-1/2 -translate-y-1/2">Visit</p>
         </div>
 
-        <div class="flex flex-col items-center">
-          <img src="/img/pyramid.png" alt="" class="mb-[18px]">
-          <p class="font-medium text-[26px] leading-[26px] text-first-text-color">Pyramid</p>
+        <div class="flex flex-col relative items-center group cursor-pointer">
+          <img src="/img/pyramid.png" alt="" class="mb-[18px] transition-opacity duration-300 group-hover:opacity-70">
+          <p class="font-medium text-[26px] leading-[26px] text-first-text-color group-hover:font-bold transition-font duration-300">Pyramid</p>
+          <p class="absolute text-white font-semibold text-[20px] leading-[22px] transition-opacity duration-300 opacity-0 group-hover:opacity-100 top-[120px] left-1/2 transform -translate-x-1/2 -translate-y-1/2">Visit</p>
         </div>
       </div>
     </div>
 
-    <div class="max-w-[1517px] pl-[70px] pr-[135px] py-[50px] pb-8 mb-8 flex">
+    <div id="blog" class="max-w-[1440px] pl-[70px] pr-[135px] py-[50px] mx-auto pb-8 mb-8 flex">
       <img src="/img/ourstories.png" alt="" class="w-[541px] h-[582px] mr-[156px]">
 
       <div class="flex flex-col justify-center">
@@ -178,7 +199,7 @@
       </div>
 
       <div class="pl-[135px] mr-auto flex space-x-[30px] overflow-visible mx-auto mb-[53px]">
-        <div class="border-2 border-white rounded-2xl h-[440px] w-[386px] shadow-custom p-3 flex-shrink-0">
+        <div class="border-2 border-white rounded-2xl h-[440px] w-[386px] shadow-custom p-3 flex-shrink-0 cursor-pointer transition-transform duration-300 hover:scale-105">
           <img src="/img/hiking.jpg" alt="hiking tour" class="mb-6">
           <p class="font-semibold text-[24px] leading-[24px] text-first-text-color mb-[14px]">Mountain Hiking Tour</p>
           <p class="text-[14px] leading-[14px] text-second-text-color mb-[14px] mb-[27px]">Mountain Hiking Tour</p>
@@ -193,7 +214,7 @@
           </div>
         </div>
 
-        <div class="border-2 border-white rounded-2xl h-[440px] w-[386px] shadow-custom p-3 flex-shrink-0">
+        <div class="border-2 border-white rounded-2xl h-[440px] w-[386px] shadow-custom p-3 flex-shrink-0 cursor-pointer transition-transform duration-300 hover:scale-105">
           <img src="/img/machupicchu.jpg" alt="machupicchu tour" class="mb-6">
           <p class="font-semibold text-[24px] leading-[24px] text-first-text-color mb-[14px]">Machu Picchu, Peru</p>
           <p class="text-[14px] leading-[14px] text-second-text-color mb-[14px] mb-[27px]">Machu Picchu, Peru</p>
@@ -208,7 +229,7 @@
           </div>
         </div>
 
-        <div class="border-2 border-white rounded-2xl h-[440px] w-[386px] shadow-custom p-3 flex-shrink-0">
+        <div class="border-2 border-white rounded-2xl h-[440px] w-[386px] shadow-custom p-3 flex-shrink-0 cursor-pointer transition-transform duration-300 hover:scale-105">
           <img src="/img/thegrandcanion.jpg" alt="the grand canion tour" class="mb-6">
           <p class="font-semibold text-[24px] leading-[24px] text-first-text-color mb-[14px]">The Grand Canyon, Arizona</p>
           <p class="text-[14px] leading-[14px] text-second-text-color mb-[14px] mb-[27px]">Mountain Hiking Tour</p>
@@ -223,7 +244,7 @@
           </div>
         </div>
 
-        <div class="border-2 border-white rounded-2xl h-[440px] w-[386px] shadow-custom p-3 flex-shrink-0">
+        <div class="border-2 border-white rounded-2xl h-[440px] w-[386px] shadow-custom p-3 flex-shrink-0 cursor-pointer transition-transform duration-300 hover:scale-105">
           <img src="/img/hiking.jpg" alt="hiking tour" class="mb-6">
           <p class="font-semibold text-[24px] leading-[24px] text-first-text-color mb-[14px]">Rome, Italy</p>
           <p class="text-[14px] leading-[14px] text-second-text-color mb-[14px] mb-[27px]">Mountain Hiking Tour</p>
@@ -240,7 +261,7 @@
       </div>
     </div>
 
-    <div class="max-w-[1440px] px-[135px] mx-auto py-[37px] mb-[37px]">
+    <div id="destinations" class="max-w-[1440px] px-[135px] mx-auto py-[37px] mb-[37px]">
       <div class="flex flex-col items-center">
         <h2 class="font-semibold text-[56px] leading-[66px] text-first-text-color mb-4">Top Destinations</h2>
         <p class="leading-[16px] text-second-text-color mb-7">Sost Brilliant reasons Entrada should be your one-stop-shop!</p>
@@ -259,16 +280,63 @@
       </div>
 
       <div class="grid-destinations">
-        <img src="/img/vietnam1.png" alt="" class="col-span-3 row-span-1 w-full h-full object-cover rounded-2xl">
-        <img src="/img/vietnam2.png" alt="" class="col-span-3 row-span-1 row-start-2 w-full h-full object-cover rounded-2xl pt-[13px]">
-        <img src="/img/vietnam3.png" alt="" class="col-span-4 row-span-2 w-full h-full object-cover rounded-2xl">
-        <img src="/img/vietnam4.png" alt="" class="col-span-5 row-span-1 w-full h-full object-cover rounded-2xl">
-        <img src="/img/vietnam6.png" alt="" class="col-span-2 w-full h-full object-cover rounded-2xl">
-        <img src="/img/vietnam5.png" alt="" class="col-span-3 w-full h-full object-cover rounded-2xl">
+        <div class="col-span-3 row-span-1 w-full h-full object-cover rounded-2xl relative">
+          <img src="/img/vietnam1.png" alt="vietnam">
+          <div class="absolute top-6 left-6 w-[42px] h-6 bg-white rounded-full flex items-center justify-center">
+            <p class="font-medium text-[14px] leading-[14px] text-first-text-color">3.5</p>
+          </div>
+          <p class="absolute bottom-12 left-6 text-white font-semibold text-[20px] leading-[20px]">Vientam</p>
+          <p class="absolute bottom-6 left-6 text-white text-[14px] leading-[14px]">Worefall</p>
+        </div>
+
+        <div class="col-span-3 row-span-1 row-start-2 w-full h-full object-cover rounded-2xl pt-[13px] relative">
+          <img src="/img/vietnam2.png" alt="vietnam">
+          <div class="absolute top-6 left-6 w-[42px] h-6 bg-white rounded-full flex items-center justify-center">
+            <p class="font-medium text-[14px] leading-[14px] text-first-text-color">3.5</p>
+          </div>
+          <p class="absolute bottom-12 left-6 text-white font-semibold text-[20px] leading-[20px]">Vientam</p>
+          <p class="absolute bottom-6 left-6 text-white text-[14px] leading-[14px]">Worefall</p>
+        </div>
+
+        <div class="col-span-4 row-span-2 w-full h-full object-cover rounded-2xl relative">
+          <img src="/img/vietnam3.png" alt="vietnam">
+          <div class="absolute top-6 left-6 w-[42px] h-6 bg-first-text-color rounded-full flex items-center justify-center">
+            <p class="font-medium text-[14px] leading-[14px] text-white">3.5</p>
+          </div>
+          <p class="absolute bottom-12 left-6 text-white font-semibold text-[20px] leading-[20px]">Vientam</p>
+          <p class="absolute bottom-6 left-6 text-white text-[14px] leading-[14px]">Worefall</p>
+        </div>
+
+        <div class="col-span-5 row-span-1 w-full h-full object-cover rounded-2xl relative">
+          <img src="/img/vietnam4.png" alt="vietnam">
+          <div class="absolute top-6 left-6 w-[42px] h-6 bg-first-text-color rounded-full flex items-center justify-center">
+            <p class="font-medium text-[14px] leading-[14px] text-white">3.5</p>
+          </div>
+          <p class="absolute bottom-12 left-6 text-white font-semibold text-[20px] leading-[20px]">Vientam</p>
+          <p class="absolute bottom-6 left-6 text-white text-[14px] leading-[14px]">Worefall</p>
+        </div>
+
+        <div class="col-span-2 w-full h-full object-cover rounded-2xl relative">
+          <img src="/img/vietnam6.png" alt="vietnam">
+          <div class="absolute top-6 left-6 w-[42px] h-6 bg-first-text-color rounded-full flex items-center justify-center">
+            <p class="font-medium text-[14px] leading-[14px] text-white">3.5</p>
+          </div>
+          <p class="absolute bottom-12 left-6 text-white font-semibold text-[20px] leading-[20px]">Vientam</p>
+          <p class="absolute bottom-6 left-6 text-white text-[14px] leading-[14px]">Worefall</p>
+        </div>
+
+        <div class="col-span-3 w-full h-full object-cover rounded-2xl relative">
+          <img src="/img/vietnam5.png" alt="vietnam">
+          <div class="absolute top-6 left-6 w-[42px] h-6 bg-first-text-color rounded-full flex items-center justify-center">
+            <p class="font-medium text-[14px] leading-[14px] text-white">3.5</p>
+          </div>
+          <p class="absolute bottom-12 left-6 text-white font-semibold text-[20px] leading-[20px]">Vientam</p>
+          <p class="absolute bottom-6 left-6 text-white text-[14px] leading-[14px]">Worefall</p>
+        </div>
       </div>
     </div>
 
-    <div class="max-w-[1440px] px-[135px] mx-auto py-[66px] flex items-center mb-7">
+    <div id="aboutus" class="max-w-[1440px] px-[135px] mx-auto py-[66px] flex items-center mb-7">
       <div class="w-[390px] h-[539px] bg-bg-for-image overflow-hidden rounded-full mr-[175px] ml-[68px]">
         <img src="/img/attractive-guy.png" alt="attractive guy">
       </div>
@@ -329,10 +397,10 @@
     <div class="max-w-[1440px] px-[135px] mx-auto py-[79px] flex justify-between">
       <div class="flex flex-col">
         <div class="flex space-x-[72px] items-center mb-5">
-          <div class="flex items-center space-x-1.5">
+          <a href="#home" class="flex items-center space-x-1.5">
             <img src="/img/logo.svg" alt="logo">
             <p class="font-sen font-bold text-[20px]">Salty</p>
-          </div>
+          </a>
         </div>
 
         <p class="leading-[26px] text-second-text-color mb-10">Enjoy the touring <br> with Salty</p>
@@ -417,5 +485,9 @@ import { Search } from '@element-plus/icons-vue'
 .gradient {
   background: linear-gradient(159.99deg, #FFD482 13.35%, #FFBE82 118.92%);
   box-shadow: 0px 2px 6px rgba(229, 137, 24, 0.15);
+}
+
+.shadow-top {
+  box-shadow: 10px 5px 10px rgba(250, 1, 1, 0.1)
 }
 </style>
