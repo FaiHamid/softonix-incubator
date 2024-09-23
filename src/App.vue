@@ -1,12 +1,19 @@
 <template>
   <div class="max-w-[1440px] p-6">
-    <h3 class="font-medium m-0">Contact list</h3>
+    <h3 class="font-medium m-0 mb-3">Contact list</h3>
+    <button
+      class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+      @click="onAddContact"
+    >
+      Add contact
+    </button>
 
     <div class="contact-list grid-cols-[repeat(auto-fill,_minmax(320px,_1fr))] grid gap-5 my-5">
       <ContactItem
         v-for="(contact, index) in contacts"
         :key="contact.id"
         :contact="contact"
+        :isNewContact="!contact.name"
         @delete="deleteContact(index)"
         @save="onContactSave($event, index)"
       />
@@ -46,5 +53,14 @@ function deleteContact (index: number) {
 
 function onContactSave (contact: IContact, index: number) {
   contacts.value[index] = { ...contact }
+}
+
+function onAddContact () {
+  contacts.value.unshift({
+    id: Math.floor(Math.random() * 100) + 1,
+    name: '',
+    description: '',
+    image: ''
+  })
 }
 </script>
