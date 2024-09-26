@@ -13,7 +13,16 @@
         </template>
 
         <template v-else>
-          <p class="font-medium cursor-text">{{ contact.name }}</p>
+          <div class="flex items-center space-x-1 truncate">
+            <p class="font-medium cursor-text truncate">{{ contact.name }}</p>
+            <p
+              :class="contact.role === 'User' ? 'bg-lime-200' : 'bg-red-200'"
+              class="px-2 py-0.5 rounded-full inline"
+            >
+              {{ contact.role }}
+            </p>
+          </div>
+
           <p class="text-gray cursor-text mt-1 truncate">
             {{ contact.description }}
           </p>
@@ -103,6 +112,7 @@ const inputRef = ref<HTMLInputElement>()
 const localContact = ref<Omit<IContact, 'id'>>({
   name: '',
   description: '',
+  role: 'User',
   image: ''
 })
 

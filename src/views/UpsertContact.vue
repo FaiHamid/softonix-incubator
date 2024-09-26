@@ -7,6 +7,8 @@
         <AppInput v-model.trim="contactForm.description" placeholder="Description" />
 
         <AppInput v-model.trim="contactForm.image" placeholder="Image Link" />
+
+        <AppSelect v-model="contactForm.role" :options="roles" />
       </div>
 
       <template #footer>
@@ -41,6 +43,7 @@ import type { IContact } from '@/types'
 
 import AppInput from '@/components/AppInput.vue'
 import AppButton from '@/components/AppButton.vue'
+import AppSelect from '@/components/AppSelect.vue'
 import IconPlus from '@/components/icons/IconPlus.vue'
 import Card from '@/components/Card.vue'
 
@@ -48,6 +51,7 @@ const router = useRouter()
 const route = useRoute()
 
 const contactsStore = useContactsStore()
+const { roles } = storeToRefs(contactsStore)
 const { contacts } = storeToRefs(contactsStore)
 const { addContact, updateContact, deleteContact } = contactsStore
 
@@ -63,6 +67,7 @@ const contactForm = reactive<IContact>(currentContact.value
     id: contacts.value.length + 1,
     name: '',
     description: '',
+    role: 'User',
     image: ''
   })
 
