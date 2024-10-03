@@ -41,12 +41,31 @@
       </div>
     </div>
 
-    <EditMode
-      v-model="editMode"
-      :contact="contact"
-      :localContact="localContact"
-      @triggEdit="triggerEditMode"
-    />
+    <div class="flex justify-end mt-2 gap-2">
+      <template v-if="editMode">
+        <span
+          class="text-blue-500 font-medium text-xs cursor-pointer hover:underline"
+          @click.stop="editMode = false"
+        >Cancel</span>
+
+        <span
+          class="text-blue-500 font-medium text-xs cursor-pointer hover:underline"
+          @click.stop="onSave"
+        >Save</span>
+      </template>
+
+      <template v-else>
+        <span
+          class="text-blue-500 font-medium text-xs cursor-pointer hover:underline"
+          @click.stop="triggerEditMode"
+        >Edit</span>
+
+        <span
+          class="text-red-500 font-medium text-xs cursor-pointer hover:underline"
+          @click.stop="$emit('delete', contact)"
+        >Delete</span>
+      </template>
+    </div>
 
     <template #footer>
       <div class="flex text-sm font-medium text-gray-dark border-t border-gray-ultra-light" @click.stop>
@@ -70,6 +89,8 @@
 const props = defineProps<{
   contact: IContact
 }>()
+
+const emit = defineEmits(['delete', 'save'])
 
 const inputRef = ref<HTMLInputElement>()
 
@@ -95,6 +116,11 @@ async function triggerEditMode () {
   localContact.value = { ...props.contact }
   await nextTick()
   inputRef.value?.focus()
+}
+
+function onSave () {
+  emit('save', localContact.value)
+  editMode.value = false
 }
 
 const imageHasError = ref(false)

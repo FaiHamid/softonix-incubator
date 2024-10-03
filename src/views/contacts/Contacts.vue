@@ -25,6 +25,8 @@
       class="cursor-pointer"
       :contact="contact"
       @click="editContact(contact.id)"
+      @delete="deleteContact"
+      @save="updateContact"
     />
   </div>
 </template>
@@ -34,6 +36,7 @@ const { $routeNames } = useGlobalProperties()
 
 const contactsStore = useContactsStore()
 const { contacts } = storeToRefs(contactsStore)
+const { updateContact, deleteContact } = contactsStore
 
 function createNewContact () {
   router.push({ name: $routeNames.upsertContact, params: { contactId: 'new' } })

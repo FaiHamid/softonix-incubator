@@ -5,33 +5,56 @@
     class="p-4"
   >
     <el-table-column prop="name" label="Name">
-      <el-input
-        v-if="editMode"
-        ref="inputRef"
-        v-model="localContact.name"
-        type="text"
-        class="no-border block font-medium w-full"
-      />
+      <template #default="scope">
+        <el-input
+          v-if="editMode && scope.$index === currRow"
+          ref="inputRef"
+          v-model="localContact.name"
+          type="text"
+          class="no-border block font-medium w-full"
+        />
+      </template>
     </el-table-column>
     <el-table-column prop="description" label="Description">
-      <el-input
-        v-if="editMode"
-        v-model="localContact.description"
-        type="text" class="block mt-1 text-gray w-full"
-      />
+      <template #default="scope">
+        <el-input
+          v-if="editMode && scope.$index === currRow"
+          v-model="localContact.description"
+          type="text" class="block mt-1 text-gray w-full"
+        />
+      </template>
     </el-table-column>
     <el-table-column prop="image" label="Image">
       <template #default="scope">
         <img :src="scope.row.image" alt="Image" class="w-[50px] h-50px">
       </template>
     </el-table-column>
-    <el-table-column prop="actions" label="Actions" @click.stop="contact = scope.row">
-      <EditMode
-        v-model="editMode"
-        :contact="contact"
-        :localContact="localContact"
-        @triggEdit="triggerEditMode"
-      />
+    <el-table-column prop="actions" label="Actions">
+      <template #default="scope">
+        <template v-if="editMode && scope.$index === currRow">
+          <span
+            class="text-blue-500 font-medium text-xs cursor-pointer hover:underline"
+            @click.stop="editMode = false"
+          >Cancel</span>
+
+          <span
+            class="text-blue-500 font-medium text-xs cursor-pointer hover:underline"
+            @click.stop="onSave"
+          >Save</span>
+        </template>
+
+        <template v-else>
+          <span
+            class="text-blue-500 font-medium text-xs cursor-pointer hover:underline pl-3"
+            @click.stop="triggerEditMode(scope.row, scope.$index)"
+          >Edit </span>
+
+          <span
+            class="text-red-500 font-medium text-xs cursor-pointer hover:underline"
+            @click.stop="deleteContact(scope.row)"
+          >Delete</span>
+        </template>
+      </template>
     </el-table-column>
   </el-table>
 </template>
@@ -39,9 +62,11 @@
 <script lang="ts" setup>
 const contactsStore = useContactsStore()
 const { contacts } = storeToRefs(contactsStore)
+const { updateContact, deleteContact } = contactsStore
 
 const inputRef = ref<HTMLInputElement>()
 const editMode = ref(false)
+const currRow = ref<number>(NaN)
 const contact = ref<IContact>(contacts.value[0])
 
 const localContact = ref<Omit<IContact, 'id'>>({
@@ -50,11 +75,18 @@ const localContact = ref<Omit<IContact, 'id'>>({
   image: ''
 })
 
-async function triggerEditMode () {
+async function triggerEditMode (currContact: IContact, index: number) {
+  currRow.value = index
   editMode.value = true
+  contact.value = currContact
   localContact.value = { ...contact.value }
   await nextTick()
   inputRef.value?.focus()
+}
+
+function onSave () {
+  updateContact({ ...localContact.value, id: contact.value.id })
+  editMode.value = false
 }
 
 </script>
@@ -64,6 +96,7 @@ async function triggerEditMode () {
   padding: 10px;
   display: flex;
   justify-content: center;
+  gap: 8px;
 }
 
 .el-table__row {
