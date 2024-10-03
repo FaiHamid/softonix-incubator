@@ -20,7 +20,7 @@
           <el-input v-model="formModel.password" type="password" />
         </el-form-item>
 
-        <el-button native-type="submit" :type="$elComponentType.primary">
+        <el-button native-type="submit" type="primary">
           Login
         </el-button>
       </el-form>

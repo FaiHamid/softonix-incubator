@@ -2,7 +2,7 @@
   <div class="flex items-center gap-4">
     <h3 class="font-medium m-0">Contact list</h3>
 
-    <el-button :type="$elComponentType.primary" @click="createNewContact">
+    <el-button type="primary" @click="createNewContact">
       <template #icon>
         <IconPlus class="w-5 h-5" />
       </template>
@@ -11,7 +11,7 @@
 
     <el-button
       class="!ml-0"
-      :type="$elComponentType.danger"
+      type="danger"
       @click="$router.replace({ name: $routeNames.login })"
     >
       Logout
@@ -25,8 +25,6 @@
       class="cursor-pointer"
       :contact="contact"
       @click="editContact(contact.id)"
-      @delete="deleteContact"
-      @save="updateContact"
     />
   </div>
 </template>
@@ -36,7 +34,6 @@ const { $routeNames } = useGlobalProperties()
 
 const contactsStore = useContactsStore()
 const { contacts } = storeToRefs(contactsStore)
-const { updateContact, deleteContact } = contactsStore
 
 function createNewContact () {
   router.push({ name: $routeNames.upsertContact, params: { contactId: 'new' } })

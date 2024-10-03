@@ -3,13 +3,13 @@
     <div class="flex">
       <div class="flex-grow text-sm truncate" @click.stop>
         <template v-if="editMode">
-          <input
+          <el-input
             ref="inputRef"
             v-model="localContact.name"
             type="text"
-            class="block font-medium w-full"
-          >
-          <input v-model="localContact.description" type="text" class="block mt-1 text-gray w-full">
+            class="no-border block font-medium w-full"
+          />
+          <el-input v-model="localContact.description" type="text" class="block mt-1 text-gray w-full" />
         </template>
 
         <template v-else>
@@ -41,31 +41,12 @@
       </div>
     </div>
 
-    <div class="flex justify-end mt-2 gap-2">
-      <template v-if="editMode">
-        <span
-          class="text-blue-500 font-medium text-xs cursor-pointer hover:underline"
-          @click.stop="editMode = false"
-        >Cancel</span>
-
-        <span
-          class="text-blue-500 font-medium text-xs cursor-pointer hover:underline"
-          @click.stop="onSave"
-        >Save</span>
-      </template>
-
-      <template v-else>
-        <span
-          class="text-blue-500 font-medium text-xs cursor-pointer hover:underline"
-          @click.stop="triggerEditMode"
-        >Edit</span>
-
-        <span
-          class="text-red-500 font-medium text-xs cursor-pointer hover:underline"
-          @click.stop="$emit('delete', contact)"
-        >Delete</span>
-      </template>
-    </div>
+    <EditMode
+      v-model="editMode"
+      :contact="contact"
+      :localContact="localContact"
+      @triggEdit="triggerEditMode"
+    />
 
     <template #footer>
       <div class="flex text-sm font-medium text-gray-dark border-t border-gray-ultra-light" @click.stop>
@@ -89,8 +70,6 @@
 const props = defineProps<{
   contact: IContact
 }>()
-
-const emit = defineEmits(['delete', 'save'])
 
 const inputRef = ref<HTMLInputElement>()
 
@@ -116,11 +95,6 @@ async function triggerEditMode () {
   localContact.value = { ...props.contact }
   await nextTick()
   inputRef.value?.focus()
-}
-
-function onSave () {
-  emit('save', localContact.value)
-  editMode.value = false
 }
 
 const imageHasError = ref(false)
