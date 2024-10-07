@@ -2,7 +2,7 @@
   <div class="max-w-[500px] m-auto">
     <el-card v-loading="loading">
       <template #header>
-        <p class="font-semibold text-xl">Login</p>
+        <p class="font-semibold text-xl">Sign up</p>
       </template>
 
       <el-form
@@ -20,19 +20,13 @@
           <el-input v-model="formModel.password" type="password" />
         </el-form-item>
 
-        <div class="flex justify-between">
-          <el-button native-type="submit" :type="$elComponentType.primary">
-            Login
-          </el-button>
+        <el-form-item label="Password Confirmation" prop="password">
+          <el-input v-model="formModel.passwordConfirmation" type="password" />
+        </el-form-item>
 
-          <el-button
-            native-type="button"
-            :type="$elComponentType.success"
-            @click="router.push({ name: $routeNames.register })"
-          >
-            Sign Up
-          </el-button>
-        </div>
+        <el-button native-type="submit" :type="$elComponentType.primary">
+          Sign up
+        </el-button>
       </el-form>
     </el-card>
   </div>
@@ -41,30 +35,30 @@
 <script lang="ts" setup>
 const router = useRouter()
 const { $routeNames } = useGlobalProperties()
-const { login } = useAuthStore()
+const { register } = useAuthStore()
 
 const formRef = useElFormRef()
 
 const formModel = useElFormModel({
   email: '',
-  password: ''
+  password: '',
+  passwordConfirmation: ''
 })
 const loading = ref(false)
 
 const formRules = useElFormRules({
   email: [useRequiredRule(), useEmailRule()],
-  password: [useRequiredRule(), useMinLenRule(6)]
+  password: [useRequiredRule(), useMinLenRule(6)],
+  passwordConfirmation: [useRequiredRule(), useMinLenRule(6)]
 })
 
 function submit () {
   formRef.value?.validate(isValid => {
-    if (isValid) {
+    if (isValid && formModel.password === formModel.passwordConfirmation) {
       loading.value = true
 
-      login(formModel)
-        .then(() => {
-          router.push({ name: $routeNames.contacts })
-        })
+      register({ email: formModel.email, password: formModel.password })
+        .then(() => router.push({ name: $routeNames.contacts }))
         .finally(() => (loading.value = false))
     }
   })

@@ -14,6 +14,7 @@ instance.interceptors.request.use(
     if (accessToken) {
       config.headers.authorization = `Bearer ${accessToken}`
     }
+
     return config
   }
 )
@@ -21,11 +22,11 @@ instance.interceptors.request.use(
 instance.interceptors.response.use(
   res => res.data,
   error => {
-    console.log(error)
+    const { handleRefreshToken } = useAuthStore()
 
-    const { logout } = useAuthStore()
     if (error.response.status === 401) {
-      logout()
+      handleRefreshToken()
+      return Promise.resolve()
     }
 
     return Promise.reject(error)
