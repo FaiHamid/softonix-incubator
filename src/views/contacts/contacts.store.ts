@@ -1,14 +1,7 @@
+import contactsData from '../../contacts.json'
+
 export const useContactsStore = defineStore('contactsStore', () => {
-  const contacts = ref<IContact[]>([])
-
-  const getContacts = () => {
-    if (contacts.value.length) return Promise.resolve()
-
-    return contactsService.getContacts()
-      .then(res => {
-        contacts.value = res
-      })
-  }
+  const contacts = ref<IContact[]>(contactsData)
 
   function addContact (contact: IContact) {
     contacts.value.push(contact)
@@ -26,7 +19,6 @@ export const useContactsStore = defineStore('contactsStore', () => {
 
   return {
     contacts,
-    getContacts,
     addContact,
     deleteContact,
     updateContact

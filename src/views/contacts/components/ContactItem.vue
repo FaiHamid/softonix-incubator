@@ -1,6 +1,6 @@
 <template>
   <Card>
-    <div class="flex">
+    <div class="flex flex-col">
       <div class="flex-grow text-sm truncate" @click.stop>
         <template v-if="editMode">
           <input
@@ -20,24 +20,8 @@
         </template>
       </div>
 
-      <div
-        class="flex items-center justify-center w-[40px] h-[40px] ml-2 rounded-full shrink-0 overflow-hidden
-      border border-gray-medium bg-gray-ultra-light"
-      >
-        <span
-          v-if="imageHasError"
-          class="font-medium uppercase"
-        >{{ nameAbbrv }}
-        </span>
-
-        <img
-          v-else
-          class="object-cover"
-          src="https://images.unsplash.com/photo-1520813792240-56fc4a3765a7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60"
-          alt="contact-logo"
-          @error="imageHasError = true"
-          @load="imageHasError = false"
-        >
+      <div class="flex items-center justify-center">
+        <LazyImg :source="contact.image" />
       </div>
     </div>
 
@@ -100,15 +84,6 @@ const localContact = ref<Omit<IContact, 'id'>>({
   image: ''
 })
 
-const nameAbbrv = computed(() => {
-  return props.contact.name.split(' ').reduce((acc, cur) => {
-    if (acc.length < 2) {
-      acc = acc.concat(cur[0])
-    }
-    return acc
-  }, '')
-})
-
 const editMode = ref(false)
 
 async function triggerEditMode () {
@@ -122,6 +97,4 @@ function onSave () {
   emit('save', localContact.value)
   editMode.value = false
 }
-
-const imageHasError = ref(false)
 </script>

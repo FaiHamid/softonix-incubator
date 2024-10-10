@@ -230,6 +230,7 @@
     "authService": true,
     "contactsService": true,
     "useHttp": true,
-    "useLink": true
+    "useLink": true,
+    "isTokenExpired": true
   }
 }

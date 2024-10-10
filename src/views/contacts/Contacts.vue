@@ -41,7 +41,7 @@ const { $routeNames } = useGlobalProperties()
 
 const { logout } = useAuthStore()
 const contactsStore = useContactsStore()
-const { getContacts, updateContact, deleteContact } = contactsStore
+const { updateContact, deleteContact } = contactsStore
 const { contacts } = storeToRefs(contactsStore)
 const loading = ref(true)
 
@@ -53,9 +53,9 @@ function editContact (contactId: number) {
   router.push({ name: $routeNames.upsertContact, params: { contactId } })
 }
 
-onMounted(() => {
-  // get data for the page
-  getContacts()
-    .finally(() => (loading.value = false))
-})
+// onMounted(() => {
+//   // get data for the page
+//   getContacts()
+//     .finally(() => (loading.value = false))
+// })
 </script>
